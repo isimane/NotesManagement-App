@@ -1,11 +1,32 @@
 import express from 'express';
 const app = express();
+import dotenv from 'dotenv';
+dotenv.config();
 
-app.get('/', (req, res) => {
-    res.send('Hello everyoneeeeeeeeeeeeeeeeee!');   
+const PORT =process.env.Port || 7859;
+
+app.use(express.json());
+
+let notes = [];
+let currentId = 1;
+
+app.get('/notes', (req, res) => {
+    res.json(notes);   
+});
+app.get('/notes/id', (req, res) => {
+    res.send('Hello everyoneEEEEEEEEEE!');   
+});
+app.post('/notes', (req, res) => {
+    res.send('Hello everyoneEEEEEEEEEE!');   
+});
+app.delete('/notes/id', (req, res) => {
+    res.send('Hello everyoneEEEEEEEEEE!');   
+});
+app.put('/notes/id', (req, res) => {
+    res.send('Hello everyoneEEEEEEEEEE!');   
 });
 
 
-app.listen(3000, () => {
-    console.log('Server is running on port http://localhost:3000');
+app.listen(PORT, () => {
+    console.log(`Server is running on http://localhost:${PORT}`);
 });
