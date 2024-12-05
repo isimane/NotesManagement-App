@@ -3,7 +3,7 @@ const { check, validationResult, checkExact } = require('express-validator');
 
 //validation:POST ,PUT,PATCH
 const validations = {
-    tagValidation: [
+    titleValidation: [
         check('title')
             .not().isEmpty().withMessage('Title is required')
             .isString().withMessage('Title must be a string'),

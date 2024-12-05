@@ -64,6 +64,27 @@ async function deleteTag(req, res){
         res.status(500).json({message: 'Internal server error'})
     }
 }
+async function addTags(req, res) {
+    try {
+        const data = req.body;
+        const tag = await prisma.tag.create({data});
+        res.status(200).json({message : 'Tags added successfully'})
+        
+    } catch (error) {
+        res.status(500).json({error: error.message})
+    }
+}
+async function getCategory (req, res){
+    try {
+        const categories =  await prisma.tag.findMany();
+        res.status(200).json(tags)
+    } catch (error) {
+        res.status(500).json({message: 'Internal server error'})
+    }
+}
+//notes
+
+
 
 
 module.exports = {
