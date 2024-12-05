@@ -102,5 +102,6 @@ module.exports = {
     getTags,
     getTagById,
     updateTag,
-    deleteTag
+    deleteTag,
+    addNotes
 }
