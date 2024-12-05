@@ -83,6 +83,16 @@ async function getCategory (req, res){
     }
 }
 //notes
+async function addNotes(req, res){
+    try {
+        const data = req.body;
+        const note = await prisma.note.create({data});
+        res.status(200).json({message: 'Note added successfully'})
+    } catch (error) {
+        res.status(500).json({message: 'Internal server error'})
+    }
+}
+
 
 
 
