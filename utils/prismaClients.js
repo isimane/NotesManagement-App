@@ -1,7 +1,5 @@
-const express = require('express');
-const router = express.Router();
-const { addTags } = require('../controllers/NoteController');
+const { PrismaClient } = require('@prisma/client')
 
-router.post('/tags', addTags);
+const prisma = new PrismaClient()
 
-module.exports = router;
+module.exports = prisma;

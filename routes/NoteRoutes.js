@@ -1,5 +1,7 @@
 const express = require('express');
 const router = express.Router();
-router.post ('/tags', );
+const { addTags } = require('../controllers/notescontrollers');
 
-module.exports =prisma;
+router.post('/tags', addTags);
+
+module.exports = router;
