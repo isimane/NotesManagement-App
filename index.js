@@ -2,27 +2,24 @@ const express = require('express');
 require ('dotenv').config();
 const app = express();
 const PORT =process.env.Port || 7859;
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+// Get the current directory
+const filename = fileURLToPath(import.meta.url);
+const dirname = path.dirname(filename);
+
+console.log('Filename:', filename);
+console.log('Directory Name:', dirname);
 
 app.use(express.json());
-
-let notes = [];
-let currentId = 1;
 app.use('/notes', require('./routes/NoteRoutes'))
-app.get('/notes', (req, res) => {
-    res.json(notes);   
+
+
+app.get('/', (req, res) => {
+    res.sendFile(path.join(dirname, './views/signup.html'));  
 });
-app.get('/notes/id', (req, res) => {
-    res.send('Hello tets!');   
-});
-app.post('/notes', (req, res) => {
-    res.send('Hello everyoneEEEEEEEEEE!');   
-});
-app.delete('/notes/id', (req, res) => {
-    res.send('Hello everyoneEEEEEEEEEE!');   
-});
-app.put('/notes/id', (req, res) => {
-    res.send('Hello everyoneEEEEEEEEEE!');   
-});
+  
 
 
 app.listen(PORT, () => {

@@ -92,6 +92,19 @@ async function addNotes(req, res){
         res.status(500).json({message: 'Internal server error'})
     }
 }
+// get notes by id
+async function getNotesById(req, res){
+    try {
+        const {noteId} = req.params;
+        const note = await prisma.note.findUnique({where: {id: noteId}});
+        if(!note)
+            return res.status(404).json({message: 'Note not found'})
+        res.status(200).json(note);
+        } catch (error) {
+            res.status(500).json({message: 'Internal server error'})
+            }
+}
+
 
 
 
